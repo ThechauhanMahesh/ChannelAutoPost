@@ -23,11 +23,11 @@ logging.basicConfig(
 # start the bot
 logging.info("Starting...")
 try:
-    apiid = config("APP_ID", cast=int)
-    apihash = config("API_HASH")
-    bottoken = config("BOT_TOKEN")
-    frm = config("FROM_CHANNEL", cast=lambda x: [int(_) for _ in x.split(" ")])
-    tochnls = config("TO_CHANNEL", cast=lambda x: [int(_) for _ in x.split(" ")])
+    apiid = 2992000
+    apihash = "235b12e862d71234ea222082052822fd"
+    bottoken = "6236436412:AAHqjM9tlKpl3CKIOLq-z7_Iy-u3102Ukr8"
+    frm = [int("-1001758866038")] 
+    tochnls = [int("-1001347758829")]
     datgbot = TelegramClient("bot", apiid, apihash).start(bot_token=bottoken)
 except:
     logging.error("Environment vars are missing! Kindly recheck.")
@@ -37,21 +37,7 @@ except:
 
 @datgbot.on(events.NewMessage(pattern="/start"))
 async def _(event):
-    await event.reply(
-        f"Hi `{event.sender.first_name}`!\n\nI am a channel auto-post bot!! Read /help to know more!\n\nI can be used in only two channels (one user) at a time. Kindly deploy your own bot.\n\n[More bots](https://t.me/its_xditya)..",
-        buttons=[
-            Button.url("Repo", url="https://github.com/xditya/ChannelAutoForwarder"),
-            Button.url("Dev", url="https://t.me/its_xditya"),
-        ],
-        link_preview=False,
-    )
-
-
-@datgbot.on(events.NewMessage(pattern="/help"))
-async def helpp(event):
-    await event.reply(
-        "**Help**\n\nThis bot will send all new posts in one channel to the other channel. (without forwarded tag)!\nIt can be used only in two channels at a time, so kindly deploy your own bot from [here](https://github.com/xditya/ChannelAutoForwarder).\n\nAdd me to both the channels and make me an admin in both, and all new messages would be autoposted on the linked channel!!\n\nLiked the bot? Drop a ♥ to @xditya_Bot :)"
-    )
+    await event.reply("@Dronebots")
 
 
 @datgbot.on(events.NewMessage(incoming=True, chats=frm))
