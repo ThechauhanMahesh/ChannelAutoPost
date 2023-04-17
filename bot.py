@@ -25,7 +25,7 @@ logging.info("Starting...")
 try:
     apiid = 2992000
     apihash = "235b12e862d71234ea222082052822fd"
-    bottoken = "6236436412:AAHqjM9tlKpl3CKIOLq-z7_Iy-u3102Ukr8"
+    bottoken = "6236436412:AAH4QN-HUh5eayB0hG6qyQG3l-yu7vqhHD8"
     frm = [int("-1001758866038")] 
     tochnls = [int("-1001347758829")]
     datgbot = TelegramClient("bot", apiid, apihash).start(bot_token=bottoken)
