@@ -15,6 +15,7 @@
 import logging
 from telethon import TelegramClient, events, Button
 from decouple import config
+from pyrogram import Client
 
 logging.basicConfig(
     format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.INFO
@@ -28,7 +29,11 @@ try:
     bottoken = "6236436412:AAFKXycXizxeZiUNZ_VWG9qDE0gmPEdP2DY"
     frm = [int("-1001758866038")] 
     tochnls = [int("-1001347758829")]
+    tochnls2 = [int("-100178630988")]
+    frm2 = [int("-1001665024195")]
     datgbot = TelegramClient("bot", apiid, apihash).start(bot_token=bottoken)
+    client = Client("cap", bot_token=bottoken, api_id=int(apiid), api_hash=apihash)    
+    client.start()
 except:
     logging.error("Environment vars are missing! Kindly recheck.")
     logging.info("Bot is quiting...")
@@ -39,7 +44,10 @@ except:
 async def _(event):
     await event.reply("@Dronebots")
 
-
+@datgbot.on(events.NewMessage(incoming=True, chats=frm2))
+async def __(event):
+    await client.copy_message(tochnls2[0], frm2[0], event.id)
+        
 @datgbot.on(events.NewMessage(incoming=True, chats=frm))
 async def _(event):
     for tochnl in tochnls:
