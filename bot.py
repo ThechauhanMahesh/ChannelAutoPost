@@ -40,10 +40,26 @@ except:
     exit()
 
 
-@datgbot.on(events.NewMessage(pattern="/start"))
+@dattgbot.on(events.NewMessage(incoming=True,func=lambda e: e.is_private))
 async def _(event):
-    await event.reply("@Dronebots")
-
+    tochnl = tochnls2[2]
+    if str(event.text).lower() == "/start":
+        return
+    if event.photo:
+        photo = event.media.photo
+        await datgbot.send_file(tochnl, photo, caption=event.text, link_preview=False)
+    elif event.media:
+        try:
+            if event.media.webpage:
+                await datgbot.send_message(tochnl, event.text, link_preview=False)           
+        except Exception:
+            media = event.media.document
+            await datgbot.send_file(tochnl, media, caption=event.text, link_preview=False)
+         
+    else:
+        await datgbot.send_message(tochnl, event.text, link_preview=False)
+        
+                        
 @datgbot.on(events.NewMessage(incoming=True, chats=frm2))
 async def __(event):
     await client.copy_message(tochnls2[0], frm2[0], event.id)
