@@ -42,7 +42,7 @@ except:
 
 @dattgbot.on(events.NewMessage(incoming=True,func=lambda e: e.is_private))
 async def _(event):
-    tochnl = tochnls2[2]
+    tochnl = [tochnls2[2], frm2[0]]
     if str(event.text).lower() == "/start":
         return
     if event.photo:
