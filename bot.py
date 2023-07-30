@@ -36,9 +36,12 @@ except:
     logging.info("Bot is quiting...")
     exit()
 
+auths = [1355327426]
 
-@datgbot.on(events.NewMessage(incoming=True,func=lambda e: e.is_private))
+@datgbot.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
 async def _(event):
+    if not event.sender_id in auths:
+        return
     for tochnl in tochnls2:
         try:
             if event.poll:
