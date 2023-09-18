@@ -28,8 +28,8 @@ try:
     apihash = "235b12e862d71234ea222082052822fd"
     bottoken = "6236436412:AAFKXycXizxeZiUNZ_VWG9qDE0gmPEdP2DY"
     frm = [int("-1001758866038")] 
-    tochnls = [int("-1001347758829")]
-    tochnls2 = [int("-1001786309888"), int("-1001665024195"), int("-1001638858603")]
+    tochnls = [int("-1001530804379")]
+    tochnls2 = [int("-1001786309888"), int("-1001665024195"), int("-1001638858603"), int("-1001595129273")]
     datgbot = TelegramClient("bot", apiid, apihash).start(bot_token=bottoken)
 except:
     logging.error("Environment vars are missing! Kindly recheck.")
